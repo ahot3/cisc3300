@@ -1,0 +1,9 @@
+1. The HTML id attribute is used to specify a unique id for an HTML element 
+2. The HTML <div> tag is a block-level element used for grouping and structuring content. 3. CSS declarations have a property and a value and apply a visual effect. 
+4. CSS selectors are used to "find" (or select) the HTML elements you want to style 
+5. If there are two or more CSS rules that point to the same element, the selector with the highest specificity will "win". 
+6. HTML treats every element as living in its own box. 
+7. The padding property allows you to specify how much space should appear between the content of an element and its border 
+8. Text align center is useful for centering inline block elements 
+9. Setting a CSS rule of display: block will cause it to start on a new line, and takes up the whole width 
+10. Create an HTML page with a div element that contains three children div elements. The children div elements should: 
