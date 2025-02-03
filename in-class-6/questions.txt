@@ -1,4 +1,4 @@
 1. Relative positioning moves an element from the position it would be in normal flow. 
-2. CSS layout models set rules and standards for how a layout should flow and position elements in a more systematic way 
+2. Layout systems set rules and standards for how a layout should flow and position elements in a more systematic way 
 3. Flexbox defines an element as a flex container 
 4. CSS Grid is a two dimensional CSS layout system 
