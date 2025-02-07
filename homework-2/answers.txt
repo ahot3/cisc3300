@@ -1,0 +1,10 @@
+1. The id attribute identifies just one element on a webpage, while the class attribute allows multiple elements to share the same styling or behavior. The id attribute does not allow two elements to share the same id.
+2. The parts of a CSS rule include a selector, declaration block, properties and values.
+3. CSS follows a cascading system which means that the rules are implemented based on importance, order and specificity. More important and specific selectors override less specific ones.
+4. Display: block: makes an element take up the full width or “block” available.
+Display: inline: allows elements to remain within the same line, taking up only the width that they need.
+Display: inline-block: like display inline in that elements stay on the same line but also allows for setting width and height.
+5. Border, padding and margin control spacing around elements and are part of the CSS box model.
+Border: outermost layer providing a visible boundary.
+Padding: space inside the border but around the content.
+Margin: space outside the border, making space between the element and other elements.
