@@ -1,0 +1,5 @@
+1. Interpreter, interpreted
+2. Dynamic
+3. Type coercion
+4. Non-primitive data types
+5. Strict equality

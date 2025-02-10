@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <script>
+        let str = "1";
+        let num = 2;
+        let result = str + num;
+        console.log("String + Number:", result); 
+        console.log("Explanation: When you add a string and number, JavaScript performs type coercion which converts the number into a string. This ends up in a concatenation: '1' + 2 = '12'.");
+
+        console.log("Number(true):", Number(true));  
+        console.log("Number(false):", Number(false));
+        console.log("Explanation: Number(true) returns 1 while Number(false) returns 0 because 1 = true and 0 = false when converting boolean values to numbers.");
+
+        console.log("Boolean(1):", Boolean(1));
+        console.log("Boolean(0):", Boolean(0));
+        console.log("Boolean('0'):", Boolean("0"));
+        console.log("Explanation: Boolean(1) is true because any number but 0 is true. Boolean(0) is false because zero is false. Boolean('0') is true because it is a string and not an actual zero value, which ends up being truthful.");
+    </script>
+
+</body>
+</html>
