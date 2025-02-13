@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+        }
+
+        .item:nth-child(1) { background-color: cyan; }
+        .item:nth-child(2) { background-color: orange; }
+        .item:nth-child(3) { background-color: silver; }
+
+        @media (max-width: 500px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (min-width: 500px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+</body>
+</html>

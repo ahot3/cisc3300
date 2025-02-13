@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+    <script>
+        function containsPinecone(str) {
+            return str.includes("pinecone");
+        }
+
+        let sentences = [
+            "Birch trees are white.",
+            "You can find a pinecone in a pine tree.",
+            "Oak trees are brown.",
+            "Pinecones can also be found on the ground."
+        ];
+
+        let filteredSentences = sentences.filter(containsPinecone);
+        console.log(filteredSentences);
+    </script>
+
+</body>
+</html>
