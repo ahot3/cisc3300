@@ -19,30 +19,56 @@
             color: white !important;
         }
 
+        .top-spacing {
+            padding-top: 25px;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-top: 25px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #808080;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: #800020;
+        }
+
         .main-title {
             font-size: 2.5rem;
-            font-weight: bold;
             color: #800020;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-weight: normal;
         }
 
         .sidebar-title {
             color: #800020;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            padding-top: 25px;
         }
 
         .sidebar-box {
             background-color: #f0f0f0;
-            padding: 10px;
+            padding: 15px;
             border-left: 4px solid #800020;
+            margin-bottom: 20px;
         }
 
         .sidebar-box a {
             display: block;
             text-decoration: none;
             color: #333;
-            font-weight: bold;
-            padding: 5px 0;
+            padding: 10px 0;
         }
 
         .sidebar-box a:hover {
@@ -54,9 +80,16 @@
             color: white;
             text-align: center;
             font-weight: bold;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 14px;
+            margin-top: 20px;
             border-radius: 5px;
+        }
+
+        .divider {
+            width: 1px;
+            background-color: #ccc;
+            height: 100%;
+            margin: 0 20px;
         }
 
         .content {
@@ -68,6 +101,16 @@
             float: right;
             margin-left: 20px;
         }
+
+        .info-section p {
+            margin: 0;
+        }
+
+        .highlight-text {
+            font-size: 1.3rem;
+            font-weight: normal;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -78,10 +121,10 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <div class="sidebar-title">Majors and Minors</div>
+                <div class="sidebar-title top-spacing">Majors and Minors</div>
                 <div class="sidebar-box">
                     <a href="#">What's Your Passion?</a>
                     <a href="#">Accelerated Degree Programs</a>
@@ -89,15 +132,34 @@
                 <div class="sidebar-button">Majors and Minors</div>
             </div>
 
-            <div class="col-md-9 content">
+            <div class="col-md-1">
+                <div class="divider"></div>
+            </div>
+
+            <div class="col-md-8 content">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Admissions and Aid</a></li>
+                        <li class="breadcrumb-item"><a href="#">Undergraduate Admission</a></li>
+                        <li class="breadcrumb-item"><a href="#">Majors and Minors</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Computer Science</li>
+                    </ol>
+                </nav>
+
                 <h1 class="main-title">Computer Science</h1>
-                <p><strong>Degree Options:</strong> Major, Minor</p>
-                <p><strong>Locations:</strong> Lincoln Center, Rose Hill</p>
-                <p>Visit the <a href="#" style="color: #800020;">Computer and Information Science Department</a></p>
+                <div class="info-section">
+                    <p>Degree Options: Major, Minor</p>
+                    <p>Locations: Lincoln Center, Rose Hill</p>
+                    <p>Visit the <a href="#" style="color: #800020;">Computer and Information Science Department</a></p>
+                </div>
                 
+                <br>
+
+                <p class="highlight-text">Wherever there’s a computer, there’s a skilled person developing, maintaining, hacking, advancing, or simply using it. Be that person.</p>
+
                 <img src="https://www.fordham.edu/media/review/content-assets/migrated/images/iStock_000021097427Medium.jpg" alt="CS Image" class="cs-image">
                 
-                <p>Wherever there’s a computer, there’s a skilled person developing, maintaining, hacking, advancing or simply using it. Be that person.</p>
                 <p>It’s difficult to imagine life without computers when they’re so central to our information-driven global society. But it’s not difficult to imagine the amazing pursuits you'll be prepared for with a degree in computer science from Fordham’s department of Computer and Information Sciences.</p>
                 <p>The computer science major emphasizes science and technology, including software design and programming, computer architecture and functions, and the development of an ability to analyze and solve problems using the computer as a tool.</p>
                 <p>Get inspired by the classes we offer. Programming. Bioinformatics. Robotics. Video game design. Cyber security. Networking. Database management. Health and medical informatics.</p>
