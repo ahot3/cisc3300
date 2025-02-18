@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Click Event</title>
+</head>
+<body>
+
+    <div id="myDiv" style="width: 200px; padding: 20px; border: 1px solid black; text-align: center; cursor: pointer;">
+        Initial text
+    </div>
+
+    <script>
+        var div = document.getElementById("myDiv");
+        div.addEventListener("click", function() {
+            div.innerHTML = "Added text!";
+            div.style.backgroundColor = "yellow";
+        });
+    </script>
+
+</body>
+</html>

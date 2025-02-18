@@ -1,0 +1,5 @@
+1. Document Object Model.
+2. document.getElementById().
+3. Cross-site scripting.
+4. Actions.
+5. Event listeners.
