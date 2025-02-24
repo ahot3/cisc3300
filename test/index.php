@@ -1,7 +1,7 @@
 <?php
-$page = isset($_GET['page']) ? $_GET['page'] : '';
+$url = isset($_GET['url']) ? $_GET['url'] : '';
 
-if ($page == "html") {
+if ($url == "html") {
     header("Content-Type: text/html");
     echo "<!DOCTYPE html>
     <html lang='en'>
@@ -9,7 +9,7 @@ if ($page == "html") {
     <body><h1>This is the HTML response</h1></body>
     </html>";
 }
-elseif ($page == "json") {
+elseif ($url == "json") {
     header("Content-Type: application/json");
     $response = ["message" => "This is the JSON response"];
     echo json_encode($response);
