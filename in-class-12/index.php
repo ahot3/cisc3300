@@ -1,9 +1,7 @@
 <?php
-// Debugging
-$request = $_SERVER['REQUEST_URI'];
-echo "<p>Debug: Request URI is <strong>$request</strong></p>";
+$page = isset($_GET['page']) ? $_GET['page'] : '';
 
-if ($request == "/test/html") {
+if ($page == "html") {
     header("Content-Type: text/html");
     echo "<!DOCTYPE html>
     <html lang='en'>
@@ -11,7 +9,7 @@ if ($request == "/test/html") {
     <body><h1>This is an HTML response!</h1></body>
     </html>";
 }
-elseif ($request == "/test/json") {
+elseif ($page == "json") {
     header("Content-Type: application/json");
     $response = ["message" => "This is a JSON response!"];
     echo json_encode($response);
