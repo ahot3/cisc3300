@@ -1,0 +1,4 @@
+1. Function context
+2. Hoisting
+3. Scope chain
+4. Encapsulation

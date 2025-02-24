@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Scope Example</title>
+</head>
+<body>
+    <script>
+        function parentFunction() {
+            let parentVar = "This is the parent function";
+
+            function childFunction() {
+                alert(parentVar);
+            }
+
+            childFunction();
+        }
+
+        parentFunction();
+    </script>
+</body>
+</html>
