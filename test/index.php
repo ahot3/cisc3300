@@ -1,20 +1,32 @@
 <?php
-$url = isset($_GET['url']) ? $_GET['url'] : '';
-
-if ($url == "html") {
-    header("Content-Type: text/html");
-    echo "<!DOCTYPE html>
-    <html lang='en'>
-    <head><title>HTML Page</title></head>
-    <body><h1>This is the HTML response</h1></body>
-    </html>";
-}
-elseif ($url == "json") {
-    header("Content-Type: application/json");
-    $response = ["message" => "This is the JSON response"];
-    echo json_encode($response);
-}
-else {
-    echo "<h1>Invalid request.</h1>";
+if (isset($_GET['get_data'])) {
+    echo "Greetings from PHP!";
+    exit;
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP + jQuery Request</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h1>Get a message from PHP:</h1>
+    <button id="loadData">Get Message</button>
+    <p id="message"></p>
+
+    <script>
+        $(document).ready(function() {
+            $("#loadData").click(function() {
+                $.get("index.php?get_data=1", function(data) {
+                    $("#message").text(data);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+1. $
+2. Associative arrays
+3. "The {$type} is"
+4. Assigned at runtime
+5. Include
