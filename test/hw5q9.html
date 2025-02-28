@@ -27,7 +27,15 @@
         $(document).ready(function() {
             $("#loadFruits").click(function() {
                 $.get("hw5q9.php/hw5q9", function(data) {
-                    let fruits = JSON.parse(data);
+                    let fruits;
+                    try {
+                        fruits = JSON.parse(data);
+                    } catch (error) {
+                        console.error("Invalid JSON:", data);
+                        $("#fruitContainer").html("<p style='color:red;'>Error: Could not load fruits.</p>");
+                        return;
+                    }
+
                     $("#fruitContainer").empty();
                     fruits.forEach(fruit => {
                         $("#fruitContainer").append(
@@ -37,6 +45,9 @@
                             </div>`
                         );
                     });
+                }).fail(function(xhr) {
+                    console.error("Error:", xhr.statusText);
+                    $("#fruitContainer").html("<p style='color:red;'>Error loading fruits.</p>");
                 });
             });
         });
