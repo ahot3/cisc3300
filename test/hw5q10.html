@@ -34,7 +34,7 @@
     <script>
         $(document).ready(function() {
             $("#fruitForm").submit(function(event) {
-                event.preventDefault(); // Prevent page reload
+                event.preventDefault();
 
                 $.post("hw5q10.php", $(this).serialize(), function(response) {
                     $("#responseMessage")
