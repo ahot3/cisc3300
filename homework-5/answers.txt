@@ -1,1 +1,6 @@
-copy lecture code from icl11
+1. DOM is a programming interface which represents the structure of an HTML or XML document as a tree of objects, where the DOM tree has each HTML element as a node, forming a tree-like representation of the page. It gives JS the ability to manipulate web pages dynamically.
+2. An XSS (cross-site scripting) attack is where an attacker puts malicious scripts into web pages that other users view, which can steal data, cookies and redirect users to other sites. You can guard against them through CSP headers, sanitizing user inputs and using frameworks that auto-sanitize.
+3. An event is an occurrence or action that JS can see and respond to. Events include click, mouseover, keydown, submit.
+4. It works by listening for a specific event and executes code when that event occurs. The parameters it can expect include an event such as click, mouseover, keydown, then uses function to execute when that event occurs.
+5. JQuery is a JS library which helps us simplify AJAX requests, animations, DOM manipulations and event handling. We use it because it's cleaner code and more simple than using JS. It’s added by adding this into the head of your HTML: <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>.
+6. AJAX is a way to fetch data from a server without reloading the page, JSON is a data format used to send and receive data between client/server. HTTP method types: GET fetches data from server, POSt sends data to server, PUT updates data on server, DELETE removes data from server.

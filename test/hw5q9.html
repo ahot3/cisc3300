@@ -5,16 +5,56 @@
     <title>Fruit Stand</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #fruitContainer { margin-top: 20px; }
-        .fruit { 
-            display: inline-block;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            background-color: #f8f8f8;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #f5f5dc;
+            padding: 20px;
         }
+        h1 {
+            color: #4CAF50;
+            font-size: 28px;
+        }
+        #loadFruits {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #loadFruits:hover {
+            background-color: #45a049;
+        }
+        #fruitContainer { 
+            margin-top: 20px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+        .fruit { 
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .fruit:hover {
+            transform: scale(1.1);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .apple { background-color: #ff4d4d; }
+        .banana { background-color: #ffcc00; color: black; }
+        .cherry { background-color: #c70039; }
+        .orange { background-color: #ff914d; }
+        .grape { background-color: #6a0dad; }
     </style>
 </head>
 <body>
@@ -27,26 +67,24 @@
         $(document).ready(function() {
             $("#loadFruits").click(function() {
                 $.get("hw5q9.php/hw5q9", function(data) {
-                    let fruits;
-                    try {
-                        fruits = JSON.parse(data);
-                    } catch (error) {
-                        console.error("Invalid JSON:", data);
-                        $("#fruitContainer").html("<p style='color:red;'>Error: Could not load fruits.</p>");
-                        return;
-                    }
-
                     $("#fruitContainer").empty();
-                    fruits.forEach(fruit => {
+                    let colors = {
+                        "Apple": "apple",
+                        "Banana": "banana",
+                        "Cherry": "cherry",
+                        "Orange": "orange",
+                        "Grape": "grape"
+                    };
+                    data.forEach(fruit => {
+                        let className = colors[fruit.name] || "default";
                         $("#fruitContainer").append(
-                            `<div class="fruit">
+                            `<div class="fruit ${className}">
                                 <strong>${fruit.name}</strong><br>
                                 Price: $${fruit.price.toFixed(2)}
                             </div>`
                         );
                     });
-                }).fail(function(xhr) {
-                    console.error("Error:", xhr.statusText);
+                }).fail(function() {
                     $("#fruitContainer").html("<p style='color:red;'>Error loading fruits.</p>");
                 });
             });
