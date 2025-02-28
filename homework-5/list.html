@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruit List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            cursor: pointer;
+            font-size: 20px;
+            padding: 10px;
+            margin: 5px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        /* Default colors */
+        #apple { background-color: red; color: white; }
+        #banana { background-color: yellow; color: black; }
+        #grape { background-color: purple; color: white; }
+        #orange { background-color: orange; color: white; }
+        #blueberry { background-color: blue; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Click a Fruit to Change Its Color</h1>
+    <ul>
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+        <li id="orange">Orange</li>
+        <li id="blueberry">Blueberry</li>
+    </ul>
+
+    <script>
+        document.querySelectorAll("li").forEach(item => {
+            item.addEventListener("click", function() {
+                this.style.backgroundColor = getRandomColor();
+            });
+        });
+
+        function getRandomColor() {
+            return "#" + Math.floor(Math.random()*16777215).toString(16);
+        }
+    </script>
+
+</body>
+</html>

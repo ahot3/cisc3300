@@ -1,0 +1,12 @@
+{
+    "name": "John Johnson",
+    "age": 32,
+    "email": "johnjohnson@gmail.com",
+    "skills": ["JavaScript", "PHP", "C++"],
+    "address": {
+      "street": "217 E 14th street",
+      "city": "New York",
+      "zip": "10001"
+    }
+  }
+  

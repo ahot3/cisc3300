@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruit Stand</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #fruitContainer { margin-top: 20px; }
+        .fruit { 
+            display: inline-block;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Fruit Stand 🍎🍌🍊</h1>
+    <button id="loadFruits">See Fruits</button>
+    <div id="fruitContainer"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#loadFruits").click(function() {
+                $.get("hw5q9.php/hw5q9", function(data) {
+                    let fruits = JSON.parse(data);
+                    $("#fruitContainer").empty();
+                    fruits.forEach(fruit => {
+                        $("#fruitContainer").append(
+                            `<div class="fruit">
+                                <strong>${fruit.name}</strong><br>
+                                Price: $${fruit.price.toFixed(2)}
+                            </div>`
+                        );
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
