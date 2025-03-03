@@ -1,0 +1,5 @@
+1. ->
+2. Visibility.
+3. Inherits both the properties and methods of the parent class.
+4. Polymorphism.
+5. Namespaces.
