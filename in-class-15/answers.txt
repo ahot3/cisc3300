@@ -1,0 +1,5 @@
+1. Superglobals
+2. $_GET
+3. Escaping data
+4. MVC
+5. RESTful API design
