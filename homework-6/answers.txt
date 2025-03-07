@@ -1,0 +1,6 @@
+1. Hoisting: when variables and functions are moved to the top of the scope.
+Closures: a function that remembers the variables from its parent scope, which happens even after the parent completes execution.
+2. PHP is a server-side scripting language that is used for handling backend logic and dynamic web pages. We use server-side languages to process form submissions, generate HTML dynamically and handle database interactions.
+3. They're similar in that they both support functions, loops, conditionals. Both can handle form inputs and validation. But they're different in that JS is client-side while PHP is server-side. Also, the syntax for variables such as $variables in PHP and let/const in JS.
+4. Because PHP is faster for small projects like the ones we work on, has easier deployment on shared hosting and has built in support for web development.
+5. Echo prints text while var_dump prints data type and values. Also, var_dump can be used for arrays and debugging.
