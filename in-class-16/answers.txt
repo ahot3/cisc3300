@@ -1,0 +1,5 @@
+1. Cookie
+2. Server
+3. Domain
+4. Server 
+5. Exceptions, Errors
