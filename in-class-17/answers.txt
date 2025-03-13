@@ -1,0 +1,4 @@
+1. MySQL
+2. Relation Database
+3. Normalization
+4. SELECT
