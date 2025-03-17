@@ -1,0 +1,10 @@
+1. A class defines properties and methods (variables & functions), and serves as a blueprint for creating objects, which are an instance of a class that have actual values assigned to the properties previously defined in the class. OOP stands for object oriented programming which is a programming model that organizes software design around objects and data (hence, object oriented), focusing on encapsulation, inheritance and polymorphism.
+2. Reasons to use an abstract class in OOP are that is ensures that its child classes implement the required methods, provides a base structure for its child classes and prevents direct instantiation of the abstract class itself.
+3. Superglobals are predefined built in variables that can be accessed anywhere regardless of scope.
+4. Defining the class in a namespace and then using the namespace in another file.
+5. MVC (which stands for model view controller) is a design pattern/methodology which separates logic into three parts. The first being model which handles the data, second being view which handles UI/HTML and third being controller which handles the requests and connects the previous two.
+6. a. /users, GET
+b. /users/{id}, GET
+c. /users, POST
+d. /users{id}, PUT
+e. /users{id}, DELETE
