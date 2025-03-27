@@ -1,0 +1,5 @@
+1. PHP Data Objects
+2. Data Source Name
+3. .env File
+4. Prepared Statement
+5. SQL Injection
