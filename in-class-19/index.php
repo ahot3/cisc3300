@@ -1,9 +1,9 @@
 <?php
 require 'db.php';
 
-$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$request = $_GET['url'] ?? '/';
 
-if ($request === '/posts') {
+if ($request === 'posts') {
     $stmt = $pdo->prepare("SELECT * FROM posts");
     $stmt->execute();
     $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -15,3 +15,4 @@ if ($request === '/posts') {
 
 http_response_code(404);
 echo json_encode(['error' => 'Not Found']);
+
