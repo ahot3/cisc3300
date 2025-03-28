@@ -1,0 +1,4 @@
+1. Cookies: small text files stored in the user's browser that are used to remember info across sessions such as user preferences activities and login status. Sessions store data on the server and use a unique session ID to associate each user with their session.
+2. SQL is the language used to interact with and manage data in relational databases. MySQL is an open source relational database management system. Relational databases store data in structured tables of rows and columns.
+3. Normalization is the process of organizing data in a database in order to preserve data integrity and reduce the redundancy, making it more concise. You can divide large tables into smaller ones for normalization.
+4. A primary key identifies each record in a table that must be unique and cannot be null. A foreign key is a column in one table that refers to the primary key of another table, which allows us to create relationships between tables.
