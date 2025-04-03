@@ -1,34 +1,25 @@
 <?php
-require_once __DIR__ . '/../.env';
+header("Content-Type: application/json");
 
-$host = $_ENV['DB_HOST'];
-$db = $_ENV['DB_NAME'];
-$user = $_ENV['DB_USER'];
-$pass = $_ENV['DB_PASS'];
+$env = parse_ini_file(__DIR__ . '/../.env');
 
-header('Content-Type: application/json');
+$host = $env['DB_HOST'];
+$db = $env['DB_NAME'];
+$user = $env['DB_USER'];
+$pass = $env['DB_PASS'];
 
 try {
-    $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
-    $pdo = new PDO($dsn, $user, $pass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
-} catch (Exception $e) {
-    echo json_encode(['error' => 'Database connection failed']);
-    exit;
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $term = $_GET['q'] ?? '';
+
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE LOWER(type) LIKE LOWER(?)");
+    $stmt->execute(["%$term%"]);
+
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($results);
+
+} catch (PDOException $e) {
+    echo json_encode(["error" => "Database error"]);
 }
-
-$searchTerm = $_GET['name'] ?? '';
-$searchTerm = trim($searchTerm);
-
-if ($searchTerm === '') {
-    echo json_encode([]);
-    exit;
-}
-
-$query = "SELECT * FROM products WHERE LOWER(name) LIKE LOWER(?)";
-$stmt = $pdo->prepare($query);
-$stmt->execute(["%$searchTerm%"]);
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-echo json_encode($results);
