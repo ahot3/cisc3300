@@ -1,24 +1,45 @@
-async function searchFruits() {
-    const query = document.getElementById('searchInput').value;
+document.addEventListener("DOMContentLoaded", () => {
+    const searchBtn = document.getElementById("searchBtn");
+    const fruitInput = document.getElementById("fruitType");
+    const resultsDiv = document.getElementById("results");
 
-    const res = await fetch('api/search.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ search: query })
-    });
+    searchBtn.addEventListener("click", () => {
+        const fruitType = fruitInput.value.trim();
+        if (!fruitType) {
+            resultsDiv.innerHTML = "<p>Please enter a fruit type.</p>";
+            return;
+        }
 
-    const data = await res.json();
-    const results = document.getElementById('results');
-    results.innerHTML = '';
+        fetch("api/search.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ type: fruitType })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (!Array.isArray(data)) {
+                resultsDiv.innerHTML = "<p>Error: Invalid response format.</p>";
+                return;
+            }
 
-    if (Array.isArray(data) && data.length > 0) {
-        data.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'result';
-            div.innerHTML = `<h2>${item.name}</h2><p>${item.description}</p>`;
-            results.appendChild(div);
+            if (data.length === 0) {
+                resultsDiv.innerHTML = "<p>No matching fruits found.</p>";
+            } else {
+                resultsDiv.innerHTML = data.map(item => `
+                    <div class="card">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `).join("");
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            resultsDiv.innerHTML = "<p>Error fetching results.</p>";
         });
-    } else {
-        results.innerHTML = '<p>No matching fruits found.</p>';
-    }
-}
+    });
+});
+
+  
