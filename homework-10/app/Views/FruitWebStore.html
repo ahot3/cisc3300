@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruit Stand</title>
+    <link rel="stylesheet" href="/app/Views/style.css">
+</head>
+<body>
+    <header>
+        <h1>Fruit Stand</h1>
+    </header>
+    <div class="container">
+        <h2>Search for Fruits by Color</h2>
+        <input type="text" id="searchColor" placeholder="e.g., Red, Green">
+        <button onclick="searchFruit()">Search</button>
+
+        <h2>All Fruits</h2>
+        <div id="productList"></div>
+
+        <h2>Add a New Fruit</h2>
+        <input type="text" id="newName" placeholder="Name">
+        <input type="text" id="newColor" placeholder="Color">
+        <input type="number" id="newPrice" placeholder="Price">
+        <button onclick="createFruit()">Add Fruit</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFruits();
+        });
+
+        const url = '/fruits';
+
+        function loadFruits() {
+            fetch(`${url}?action=all`)
+                .then(response => response.json())
+                .then(displayFruits)
+                .catch(error => console.error('Error:', error));
+        }
+
+        function searchFruit() {
+            let color = document.getElementById('searchColor').value;
+            fetch(`${url}?action=search&color=${encodeURIComponent(color)}`)
+                .then(response => response.json())
+                .then(displayFruits)
+                .catch(error => console.error('Error:', error));
+        }
+
+        function createFruit() {
+            let name = document.getElementById('newName').value;
+            let color = document.getElementById('newColor').value;
+            let price = document.getElementById('newPrice').value;
+
+            fetch(`${url}?action=create`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, color, price })
+            })
+            .then(response => response.json())
+            .then(() => loadFruits())
+            .catch(error => console.error('Error:', error));
+        }
+
+        function deleteFruit(id) {
+            fetch(`${url}?action=delete`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+            })
+            .then(response => response.json())
+            .then(() => loadFruits())
+            .catch(error => console.error('Error:', error));
+        }
+
+        function displayFruits(data) {
+            let container = document.getElementById('productList');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = '<p>No fruits found.</p>';
+                return;
+            }
+
+            let table = '<table><tr><th>Name</th><th>Color</th><th>Price ($)</th><th>Actions</th></tr>';
+
+            data.forEach(fruit => {
+                table += `<tr>
+                            <td>${fruit.name}</td>
+                            <td>${fruit.color}</td>
+                            <td>${fruit.price}</td>
+                            <td><button onclick="deleteFruit(${fruit.id})">Delete</button></td>
+                          </tr>`;
+            });
+
+            table += '</table>';
+            container.innerHTML = table;
+        }
+    </script>
+</body>
+</html>
