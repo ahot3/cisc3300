@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruit Stand Products</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Fruit Stand Inventory</h1>
+
+    <form id="productForm">
+        <input type="hidden" id="productId">
+        <input type="text" id="name" placeholder="Fruit name" required>
+        <input type="text" id="type" placeholder="Type" required>
+        <textarea id="description" placeholder="Nutrients & vitamins..." required></textarea>
+        <button type="submit">Save Product</button>
+    </form>
+
+    <div id="productList"></div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
