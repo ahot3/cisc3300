@@ -28,21 +28,17 @@ class Model
                 
                 error_log("Model::db - PDO connection successful");
                 
-                // Test the connection with a simple query
                 $test = self::$db->query("SELECT 1");
                 $result = $test->fetch();
                 error_log("Model::db - Test query result: " . print_r($result, true));
                 
-                // Get MySQL version
                 $version = self::$db->query("SELECT VERSION() as version")->fetch();
                 error_log("Model::db - MySQL version: " . ($version['version'] ?? 'unknown'));
                 
-                // Check if reviews table exists
                 $tableCheck = self::$db->query("SHOW TABLES LIKE 'reviews'")->rowCount();
                 error_log("Model::db - 'reviews' table exists: " . ($tableCheck > 0 ? 'Yes' : 'No'));
                 
                 if ($tableCheck > 0) {
-                    // Get table structure
                     $columns = self::$db->query("DESCRIBE reviews")->fetchAll(PDO::FETCH_ASSOC);
                     error_log("Model::db - 'reviews' table structure: " . print_r($columns, true));
                 }

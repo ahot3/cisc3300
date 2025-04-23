@@ -32,12 +32,10 @@ class Newsletter extends Model
             error_log("Newsletter::subscribe - Getting database connection");
             $db = self::db();
             
-            // Check if the newsletter_subscribers table exists
             $tableCheck = $db->query("SHOW TABLES LIKE 'newsletter_subscribers'");
             if ($tableCheck->rowCount() === 0) {
                 error_log("Newsletter::subscribe - Table 'newsletter_subscribers' doesn't exist");
                 
-                // Create the table if it doesn't exist
                 $createTable = "CREATE TABLE `newsletter_subscribers` (
                     `id` int(11) NOT NULL AUTO_INCREMENT,
                     `email` varchar(100) NOT NULL,
@@ -52,13 +50,11 @@ class Newsletter extends Model
                 error_log("Newsletter::subscribe - Created 'newsletter_subscribers' table");
             }
             
-            // Check if email already exists
             $checkStmt = $db->prepare("SELECT id FROM newsletter_subscribers WHERE email = :email");
             $checkStmt->execute(['email' => $email]);
             $exists = $checkStmt->fetch();
             
             if ($exists) {
-                // Update existing record
                 $sql = "UPDATE newsletter_subscribers SET updated_at = NOW()";
                 
                 if (!empty($name)) {
@@ -78,12 +74,10 @@ class Newsletter extends Model
                 $stmt = $db->prepare($sql);
                 $stmt->execute($params);
                 
-                // Get the updated record
                 $stmt = $db->prepare("SELECT * FROM newsletter_subscribers WHERE id = :id");
                 $stmt->execute(['id' => $exists['id']]);
                 return new self($stmt->fetch());
             } else {
-                // Insert new record
                 $sql = "INSERT INTO newsletter_subscribers (email, name, created_at) VALUES (:email, :name, NOW())";
                 $stmt = $db->prepare($sql);
                 $stmt->execute([

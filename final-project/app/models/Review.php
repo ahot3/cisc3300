@@ -47,7 +47,7 @@ class Review extends Model
         $dest = htmlspecialchars($dest, ENT_QUOTES, 'UTF-8');
         $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
         $comment = htmlspecialchars($comment, ENT_QUOTES, 'UTF-8');
-        $stars = min(5, max(1, (int)$stars)); // Ensure stars is between 1-5
+        $stars = min(5, max(1, (int)$stars));
         
         $stmt = self::db()->prepare(
             "INSERT INTO reviews 
