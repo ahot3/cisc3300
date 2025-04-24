@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2025 at 11:40 PM
+-- Generation Time: Apr 24, 2025 at 03:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -66,7 +66,8 @@ CREATE TABLE `newsletter_subscribers` (
 INSERT INTO `newsletter_subscribers` (`id`, `email`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'ahot3@fordham.edu', '', '2025-04-23 15:55:30', NULL),
 (2, 'aldin100@example.com', '', '2025-04-23 16:14:52', NULL),
-(3, 'aldin@example.com', 'Aldin', '2025-04-23 16:17:49', NULL);
+(3, 'aldin@example.com', 'Aldin', '2025-04-23 16:17:49', NULL),
+(4, 'john@example.com', 'John', '2025-04-23 17:46:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,6 +96,30 @@ INSERT INTO `reviews` (`id`, `destination`, `reviewer_name`, `comment`, `stars`,
 (5, 'turkey', 'Patrick', 'Fun city', 4, '2025-04-23 02:06:43'),
 (6, 'japan', 'Pinecone', 'Amazing country', 5, '2025-04-23 17:03:08');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
+(1, 'traveler1', 'traveler1@example.com', '$2y$10$6KFucV1nPTR8tBgs1o.Bse7zZBUWJDCx8inZL/fzPBk1TgvFTmyXy', '2025-03-10 09:15:22'),
+(2, 'adventurer', 'adventurer@example.com', '$2y$10$6KFucV1nPTR8tBgs1o.Bse7zZBUWJDCx8inZL/fzPBk1TgvFTmyXy', '2025-03-15 14:30:45'),
+(3, 'worldexplorer', 'explorer@example.com', '$2y$10$6KFucV1nPTR8tBgs1o.Bse7zZBUWJDCx8inZL/fzPBk1TgvFTmyXy', '2025-04-01 11:20:33'),
+(4, 'aldin10', 'aldin100@example.com', '$2y$10$mvJiK5R5B7s70QRy4DnC0./LDfTKRvVlx0.VPqk181x3c8dtmBrr6', '2025-04-23 21:22:04');
+
 --
 -- Indexes for dumped tables
 --
@@ -119,6 +144,14 @@ ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -132,13 +165,19 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `newsletter_subscribers`
 --
 ALTER TABLE `newsletter_subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
