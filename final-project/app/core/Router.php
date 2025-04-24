@@ -4,6 +4,7 @@ namespace app\core;
 use app\controllers\MainController;
 use app\controllers\ContactController;
 use app\controllers\ReviewController;
+use app\controllers\AuthController;
 
 class Router
 {
@@ -34,7 +35,42 @@ class Router
             return;
         }
         
-        // Public pages
+        if ($this->method === 'GET' && $this->path === '/register') {
+            error_log("Router: Dispatching to AuthController->registerView()");
+            (new AuthController())->registerView();
+            return;
+        }
+
+        if ($this->method === 'GET' && $this->path === '/login') {
+            error_log("Router: Dispatching to AuthController->loginView()");
+            (new AuthController())->loginView();
+            return;
+        }
+
+        if ($this->method === 'GET' && $this->path === '/logout') {
+            error_log("Router: Dispatching to AuthController->logout()");
+            (new AuthController())->logout();
+            return;
+        }
+
+        if ($this->method === 'POST' && $this->path === '/api/register') {
+            error_log("Router: Dispatching to AuthController->register()");
+            (new AuthController())->register();
+            return;
+        }
+
+        if ($this->method === 'POST' && $this->path === '/api/login') {
+            error_log("Router: Dispatching to AuthController->login()");
+            (new AuthController())->login();
+            return;
+        }
+
+        if ($this->method === 'GET' && $this->path === '/api/current-user') {
+            error_log("Router: Dispatching to AuthController->getCurrentUser()");
+            (new AuthController())->getCurrentUser();
+            return;
+        }
+        
         if ($this->method === 'GET' && $this->path === '/') {
             error_log("Router: Dispatching to MainController->homepage()");
             (new MainController())->homepage();
@@ -71,21 +107,18 @@ class Router
             return;
         }
 
-        // Contact API
         if ($this->method === 'POST' && $this->path === '/api/contact') {
             error_log("Router: Dispatching to ContactController->postContact()");
             (new ContactController())->postContact();
             return;
         }
 
-        // Newsletter API
         if ($this->method === 'POST' && $this->path === '/api/newsletter') {
             error_log("Router: Dispatching to ContactController->postNewsletter()");
             (new ContactController())->postNewsletter();
             return;
         }
 
-        // Reviews API
         if ($this->method === 'GET' && $this->path === '/api/reviews') {
             error_log("Router: Dispatching to ReviewController->getReviews()");
             (new ReviewController())->getReviews();
@@ -98,7 +131,6 @@ class Router
             return;
         }
         
-        // Test route for debugging
         if ($this->method === 'GET' && $this->path === '/test-newsletter') {
             error_log("Router: Testing Newsletter functionality");
             try {
@@ -116,7 +148,6 @@ class Router
             return;
         }
 
-        // 404
         error_log("Router: No route found for {$this->method} {$this->path}");
         http_response_code(404);
         echo 'Not Found';

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Carousel initialization
   const carouselEl = document.querySelector('#homeCarousel');
   if (carouselEl) {
     const carousel = new bootstrap.Carousel(carouselEl, {
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Navbar scroll behavior
   const navbar = document.getElementById('mainNav');
   
   function handleNavbarScroll() {
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   window.addEventListener('scroll', handleNavbarScroll);
   
-  // Newsletter form handling
   const newsletterForm = document.getElementById('newsletter-form');
   if (newsletterForm) {
     console.log('Homepage newsletter form found');
@@ -83,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -98,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Image container interactions
   const imageContainers = document.querySelectorAll('.image-container');
   imageContainers.forEach(container => {
     if (container) {
@@ -112,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Helper function for escaping HTML
   function escapeHtml(text) {
     if (!text) return '';
     const div = document.createElement('div');
