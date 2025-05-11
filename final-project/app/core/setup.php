@@ -8,25 +8,36 @@ if (! $projectRoot) {
 }
 error_log("Project root: " . $projectRoot);
 
-$envFile = $projectRoot . '/.env';
-error_log("Env file path: " . $envFile);
+// Check if we're in Heroku environment
+if(getenv('JAWSDB_URL')) {
+    // Production environment - use getenv() to get environment variables
+    define('DB_HOST', getenv('DBHOST'));
+    define('DB_NAME', getenv('DBNAME'));
+    define('DB_USER', getenv('DBUSER'));
+    define('DB_PASS', getenv('DBPASS'));
+    error_log("Using Heroku environment variables for database connection");
+} else {
+    // Local environment - use .env file
+    $envFile = $projectRoot . '/.env';
+    error_log("Env file path: " . $envFile);
 
-if (!file_exists($envFile)) {
-    error_log("Env file does not exist: " . $envFile);
+    if (!file_exists($envFile)) {
+        error_log("Env file does not exist: " . $envFile);
+    }
+
+    $env = parse_ini_file($envFile, false, INI_SCANNER_RAW);
+    if ($env === false) {
+        error_log("Failed to parse env file: " . $envFile);
+        throw new \Exception("Unable to load .env at {$envFile}");
+    }
+
+    error_log("Env variables: " . print_r($env, true));
+
+    define('DB_HOST', $env['DB_HOST'] ?? 'localhost');
+    define('DB_NAME', $env['DB_NAME'] ?? 'final-project');
+    define('DB_USER', $env['DB_USER'] ?? 'root');
+    define('DB_PASS', $env['DB_PASS'] ?? '');
 }
-
-$env = parse_ini_file($envFile, false, INI_SCANNER_RAW);
-if ($env === false) {
-    error_log("Failed to parse env file: " . $envFile);
-    throw new \Exception("Unable to load .env at {$envFile}");
-}
-
-error_log("Env variables: " . print_r($env, true));
-
-define('DB_HOST', $env['DB_HOST'] ?? 'localhost');
-define('DB_NAME', $env['DB_NAME'] ?? 'final-project');
-define('DB_USER', $env['DB_USER'] ?? 'root');
-define('DB_PASS', $env['DB_PASS'] ?? '');
 
 error_log("Database connection settings:");
 error_log("DB_HOST: " . DB_HOST);
